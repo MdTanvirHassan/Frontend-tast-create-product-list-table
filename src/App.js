@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+// import {Route, Routes,} from "react-router-dom";
+import BulkUploadButton from './components/BulkUploadButton/BulkUploadButton';
+import Footer from './components/Footer/Footer';
+import NavBar from './components/NavBar/NavBar';
+import ProductTable from './components/ProductTable/ProductTable';
+// import ProductList from './components/ProductList/ProductList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <NavBar />
+      <ProductTable/>
+      <BulkUploadButton />
+        {/* <ProductList /> */}
+      {/* <Routes>
+        
+          <Route exact path="/" element={<ProductTable/>}/>
+          <Route exact path="/updated" element={<ProductList />}/>
+        </Routes> */}
+        <Footer/>
+      
+      
+      
+      
     </div>
   );
 }
