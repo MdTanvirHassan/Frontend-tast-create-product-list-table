@@ -7,7 +7,7 @@ import ProductTable from "./components/ProductTable/ProductTable";
 import ScrollToTop from "react-scroll-to-top";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import Home from "./components/Home";
-// import ProductList from './components/ProductList/ProductList';
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product" element={<ProductTable />} />
         <Route exact path="/update" element={<BulkUploadButton />} />
+        <Route exact path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
