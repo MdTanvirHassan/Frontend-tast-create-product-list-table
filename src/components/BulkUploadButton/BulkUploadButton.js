@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 import PuffLoader from "react-spinners/PuffLoader";
 
 const ProductList = () => {
   const [editing, setEditing] = useState(false);
   const [products, setProducts] = useState([]);
   const [preLoading, setPreLoading] = useState(false);
+
   useEffect(() => {
     setPreLoading(true);
     setTimeout(() => {
       setPreLoading(false);
     }, 1000);
   }, []);
-  const styles = {
-    height: "250px",
-  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const config = {
-        headers: {
-          Authorization:
-            "Basic " +
-            btoa(
-              "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8:cs_1dd3842d9bdc656ace99007faef0bb09a4d34400"
-            ),
-        },
-      };
-
-      const result = await axios.get(
+      const response = await fetch(
         "https://demostore.mirailit.com/wp-json/wc/v3/products",
-        config
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Basic " +
+              btoa(
+                "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8:cs_1dd3842d9bdc656ace99007faef0bb09a4d34400"
+              ),
+          },
+        }
       );
-
-      setProducts(result.data);
+      const data = await response.json();
+      setProducts(data);
     };
     fetchData();
   }, []);
@@ -49,31 +46,36 @@ const ProductList = () => {
   };
 
   const handleBatchUpdate = async () => {
-    const data = { update: products };
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "Basic " +
-          btoa(
-            "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8:cs_1dd3842d9bdc656ace99007faef0bb09a4d34400"
-          ),
-      },
-    };
-
     try {
-      const response = await axios.post(
+      const response = await fetch(
         "https://demostore.mirailit.com/wp-json/wc/v3/products/batch",
-        data,
-        config
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Basic " +
+              btoa(
+                "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8:cs_1dd3842d9bdc656ace99007faef0bb09a4d34400"
+              ),
+          },
+          body: JSON.stringify({ update: products }),
+        }
       );
-      console.log(response);
+      const json = await response.json();
+      if (!response.ok) {
+        throw new Error(json.message);
+      }
+      console.log(json);
       alert("Price update successful!");
       setEditing(false);
     } catch (error) {
       console.log(error);
       alert("Batch update failed. Please try again.");
     }
+  };
+  const styles = {
+    height: "450px",
   };
 
   return (

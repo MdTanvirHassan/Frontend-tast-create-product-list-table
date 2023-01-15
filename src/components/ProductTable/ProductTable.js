@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 import PuffLoader from "react-spinners/PuffLoader";
 
 const ProductTable = () => {
@@ -15,24 +15,31 @@ const ProductTable = () => {
     height: "350px",
   };
   const [products, setProducts] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://demostore.mirailit.com/wp-json/wc/v3/products",
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Basic " +
+              btoa(
+                "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8:cs_1dd3842d9bdc656ace99007faef0bb09a4d34400"
+              ),
+          },
+        }
+      );
+      const data = await response.json();
+      setProducts(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await axios.get(
-          "https://demostore.mirailit.com/wp-json/wc/v3/products",
-          {
-            auth: {
-              username: "ck_35f64c79ebe2cfd6979b6f81c103ff01135ae1b8",
-              password: "cs_1dd3842d9bdc656ace99007faef0bb09a4d34400",
-            },
-          }
-        );
-        setProducts(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchProducts();
+    fetchData();
   }, []);
 
   return (
