@@ -1,4 +1,5 @@
 import "./App.css";
+import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import BulkUploadButton from "./components/BulkUploadButton/BulkUploadButton";
 import Footer from "./components/Footer/Footer";
