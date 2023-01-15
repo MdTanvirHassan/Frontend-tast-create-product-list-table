@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PuffLoader from "react-spinners/PuffLoader";
+
 
 const ProductList = () => {
   const [editing, setEditing] = useState(false);
   const [products, setProducts] = useState([]);
+  const [preLoading,setPreLoading]= useState(false);
+    useEffect(()=>{
+      setPreLoading(true);
+      setTimeout(()=>{
+        setPreLoading(false);
+      },1000);
+    },[]);
+    const styles={
+      height: '250px',
+    }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,13 +78,26 @@ const ProductList = () => {
     <div className="container m-auto">
         <h2 className='text-center  mt-28 mb-5 text-purple-700'>Product List -UpdateAble</h2>
         <div className="text-center  items-center justify-center mb-5">
-      <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center mr-2 mb-2"
+      <button className="text-white button"
        onClick={handleEdit}>{editing ? "Cancel" : "Edit"}
       </button>
       {editing && (
         <button onClick={handleBatchUpdate}>Update Prices</button>
       )}
       </div>
+      {
+            preLoading?
+            <div className='flex justify-center text-center items-center' style={styles}>
+                <PuffLoader 
+                color="#36d7b7" 
+                loading={preLoading}
+                size={50}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+                className='mt-5 text-center items-center justify-center'
+              />
+              </div>
+              :
 
       <table className='m-auto bg-orange-50'>
         <thead >
@@ -88,7 +113,7 @@ const ProductList = () => {
             <tr key={product.id} className='border border-gray-200 p-2 shadow-md rounded-md mt-5'>
                 
                 <td className="border border-r-gray-300"><img src={product.images[0].src} alt={product.name} height='50px'  width={150} className='rounded-lg' /></td>
-              <td className="border border-r-gray-300  text-center">{product.name}</td>
+              <td className="border border-r-gray-300  text-center text-xs md:text-sm px-2">{product.name}</td>
               <td className="border border-r-gray-300 text-center font-bold px-10">
                 {editing ? (
                   <input
@@ -105,7 +130,7 @@ const ProductList = () => {
           ))}
         </tbody>
       </table>
-      
+}
     </div>
      );
     };

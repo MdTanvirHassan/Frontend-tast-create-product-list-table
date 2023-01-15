@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PuffLoader from "react-spinners/PuffLoader";
 
 const ProductTable = () => {
+    
+    //! preloader
+    const [preLoading,setPreLoading]= useState(false);
+    useEffect(()=>{
+      setPreLoading(true);
+      setTimeout(()=>{
+        setPreLoading(false);
+      },1000);
+    },[]);
+    const styles={
+      height: '350px',
+    }
     const [products, setProducts] = useState([]);
-
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -22,17 +34,31 @@ const ProductTable = () => {
     }, []);
 
     return (
+        <>
         <div className='container  m-auto'>
         <h2 className='text-center  mt-28 mb-5 text-purple-700'>Product List</h2>
-        <table className='m-auto bg-orange-50'>
+        {
+            preLoading?
+            <div className='flex justify-center text-center items-center h-screen' style={styles}>
+                <PuffLoader 
+                color="#36d7b7" 
+                loading={preLoading}
+                size={50}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+                className='mt-5 text-center items-center justify-center'
+              />
+              </div>
+              :
+        <table className='m-auto bg-orange-50 rounded-lg shadow-lg shadow-gray-400'>
             <thead>
                 <tr className='text-black border border-gray-200 p-4 shadow-lg rounded-md mt-5 bg-purple-50'>
-                    <th className="border border-r-gray-300">Image</th>
-                    <th className="border border-r-gray-300">Name</th>
+                    <th className="border border-r-gray-300">Product Image</th>
+                    <th className="border border-r-gray-300">Product Name</th>
                     <th className="border border-r-gray-300">Price</th>
                 </tr>
             </thead>
-            <tbody className="">
+            <tbody className=" ">
                 
                 {products.map(product => (
                     <tr key={product.id} className='border border-gray-200 p-2 shadow-md rounded-md mt-5'>
@@ -43,7 +69,10 @@ const ProductTable = () => {
                 ))}
             </tbody>
         </table>
+}
         </div>
+
+        </>
     );
 }
 

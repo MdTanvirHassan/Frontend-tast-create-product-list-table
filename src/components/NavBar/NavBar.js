@@ -2,18 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaFacebook, FaGithub, FaLinkedinIn } from 'react-icons/fa';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { TfiWorld } from 'react-icons/tfi';
-// import { useRouter } from 'next/router';
-
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [navBg, setNavBg] = useState('#00001e');
-  //const [linkColor, setLinkColor] = useState('#1f2937');
   
-
   const handleNav = () => {
     setNav(!nav);
   };
@@ -48,10 +44,13 @@ const Navbar = () => {
         <div>
           <ul  className="hidden md:flex">
           <li className="ml-7 text-sm uppercase text-white  hover:border-b">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="ml-7 text-sm uppercase text-white hover:border-b">
-              <a href="/#about">About</a>
+              <Link to="/product">Product</Link>
+            </li>
+            <li className="ml-7 text-sm uppercase text-white hover:border-b">
+              <Link to="/update">Update</Link>
             </li>
             <li className="ml-5 text-sm uppercase text-white hover:text-white">
               <a
@@ -95,7 +94,7 @@ const Navbar = () => {
             </li>
             <li className="ml-5 text-sm uppercase text-white hover:text-white">
               <a
-                href="personal-portfolio-next-7ny3rhpx1-mdtanvirhassan.vercel.app"
+                href="https://personal-portfolio-next-7ny3rhpx1-mdtanvirhassan.vercel.app/"
                 target="_blank"
                 rel="noreferrer">
                 <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
@@ -146,16 +145,21 @@ const Navbar = () => {
           </div>
           <div className="py-4 flex flex-col">
             <ul className="uppercase">
-              <a href="/">
+              <Link to="/">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   Home
                 </li>
-              </a>
-              <a href="/#about">
+              </Link>
+              <Link to="/product">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   About
                 </li>
-              </a>
+              </Link>
+              <Link to="/update">
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Edit
+                </li>
+              </Link>
              
             </ul>
             <div className="pt-32">
@@ -179,18 +183,24 @@ const Navbar = () => {
                     <FaGithub />
                   </div>
                 </a>
-                <a href="/#contact">
+                <a
+                href="mailto:tanvirtamim72@gmail.com"
+                target="_blank"
+                rel="noreferrer">
                   <div
                     onClick={() => setNav(!nav)}
                     className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 social-icons">
                     <AiOutlineMail />
                   </div>
                 </a>
-                <a href="/resume">
+                <a
+                href="https://personal-portfolio-next-7ny3rhpx1-mdtanvirhassan.vercel.app/"
+                target="_blank"
+                rel="noreferrer">
                   <div
                     onClick={() => setNav(!nav)}
                     className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 social-icons">
-                    <BsFillPersonLinesFill />
+                    <TfiWorld />
                   </div>
                 </a>
               </div>
