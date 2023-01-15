@@ -36,7 +36,7 @@ const ProductTable = () => {
     return (
         <>
         <div className='container  m-auto'>
-        <h2 className='text-center  pt-28 mb-5 text-purple-700'>Product List</h2>
+        <h2 className='text-center  pt-28 mb-5 text-purple-700 tracking-wider'>Product List</h2>
         {
             preLoading?
             <div className='flex justify-center text-center items-center h-screen' style={styles}>
@@ -62,9 +62,9 @@ const ProductTable = () => {
                 
                 {products.map(product => (
                     <tr key={product.id} className='border border-gray-200 p-2 shadow-md rounded-md mt-5 hover:bg-gray-100'>
-                        <td className="border border-r-gray-300 p-2"><img src={product.images[0].src} alt={product.name} height='50px'  width={150} className='rounded-xl'/></td>
-                        <td className='border border-r-gray-300  text-center text-xs md:text-sm p-2'>{product.name}</td>
-                        <td className="border border-r-gray-300 text-center font-bold px-10" >{product.price}</td>
+                        <td className="border border-r-gray-200 p-2"><img src={product.images[0].src} alt={product.name} height='50px'  width={150} className='rounded-xl'/></td>
+                        <td className='border border-r-gray-200  text-center text-xs md:text-sm p-2'>{product.name}</td>
+                        <td className="border border-r-gray-200 text-center font-bold px-10" >{product.price}</td>
                     </tr>
                 ))}
             </tbody>

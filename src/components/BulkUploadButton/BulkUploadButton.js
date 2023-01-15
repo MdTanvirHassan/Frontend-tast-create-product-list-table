@@ -76,7 +76,7 @@ const ProductList = () => {
 
   return (
     <div className="container m-auto">
-        <h2 className='text-center  pt-28 mb-5 text-purple-700'>Product List -UpdateAble</h2>
+        <h2 className='text-center  pt-28 mb-5 text-purple-700 tracking-wider'>Product List -UpdateAble</h2>
         <div className="text-center  items-center justify-center mb-5">
       <button className="text-white button"
        onClick={handleEdit}>{editing ? "Cancel" : "Edit"}
