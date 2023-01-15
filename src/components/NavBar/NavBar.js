@@ -32,13 +32,13 @@ const Navbar = () => {
       style={{ backgroundColor: `${navBg}` }}
       className={
         shadow
-          ? "fixed w-full h-20 shadow-lg shadow-gray-700 z-[100] ease-in-out duration-300 -mt-28"
-          : "fixed w-full h-20 z-[100] -mt-28"
+          ? "fixed w-full h-20 shadow-lg shadow-gray-700 z-[100] ease-in-out duration-300 "
+          : "fixed w-full h-20 z-[100] "
       }>
-      <div className="flex justify-center items-center w-full h-full px-2 2xl:px-16">
+      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <a href="/">
           <div className="text-white flex">
-            <h2>Front-End-Task</h2>
+            <h3 className='text-xl'>Front-End-Task</h3>
           </div>
         </a>
         <div>
@@ -52,12 +52,12 @@ const Navbar = () => {
             <li className="ml-7 text-sm uppercase text-white hover:border-b">
               <Link to="/update">Update</Link>
             </li>
-            <li className="ml-5 text-sm uppercase text-white hover:text-white">
+            <li className="ml-5 lg:ml-64 text-sm uppercase text-white hover:text-white">
               <a
-                href="https://www.linkedin.com/in/md-tanvir-hassan-490253240"
+                href="https://www.linkedin.com/in/md-tanvir-hassan-490253240/"
                 target="_blank"
                 rel="noreferrer">
-                <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
+                <div className="rounded-full bg-blue-500 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
                   <FaLinkedinIn />
                 </div>
               </a>
@@ -67,7 +67,7 @@ const Navbar = () => {
                 href="https://www.facebook.com/tanvirhassanmim"
                 target="_blank"
                 rel="noreferrer">
-                <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
+                <div className="rounded-full bg-blue-500 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
                   <FaFacebook />
                 </div>
               </a>
@@ -77,7 +77,7 @@ const Navbar = () => {
                 href="https://github.com/MdTanvirHassan"
                 target="_blank"
                 rel="noreferrer">
-                <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
+                <div className="rounded-full bg-gray-600 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
                   <FaGithub />
                 </div>
               </a>
@@ -87,7 +87,7 @@ const Navbar = () => {
                 href="mailto:tanvirtamim72@gmail.com"
                 target="_blank"
                 rel="noreferrer">
-                <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
+                <div className="rounded-full bg-red-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
                   <AiOutlineMail />
                 </div>
               </a>
@@ -97,7 +97,7 @@ const Navbar = () => {
                 href="https://personal-portfolio-next-7ny3rhpx1-mdtanvirhassan.vercel.app/"
                 target="_blank"
                 rel="noreferrer">
-                <div className="rounded-full bg-gray-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
+                <div className="rounded-full bg-green-400 p-3 -mt-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
                   <TfiWorld />
                 </div>
               </a>

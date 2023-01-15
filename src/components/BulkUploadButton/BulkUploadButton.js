@@ -76,7 +76,7 @@ const ProductList = () => {
 
   return (
     <div className="container m-auto">
-        <h2 className='text-center  mt-28 mb-5 text-purple-700'>Product List -UpdateAble</h2>
+        <h2 className='text-center  pt-28 mb-5 text-purple-700'>Product List -UpdateAble</h2>
         <div className="text-center  items-center justify-center mb-5">
       <button className="text-white button"
        onClick={handleEdit}>{editing ? "Cancel" : "Edit"}
@@ -99,20 +99,20 @@ const ProductList = () => {
               </div>
               :
 
-      <table className='m-auto bg-orange-50'>
+      <table className='m-auto bg-purple-50 shadow-lg rounded-lg shadow-gray-400'>
         <thead >
-          <tr className='text-black border border-gray-200 p-4 shadow-lg rounded-md mt-5 bg-purple-50'>
+          <tr className='text-black border border-gray-200 p-4 shadow-lg rounded-md mt-5 bg-orange-50'>
           
-          <th className="border border-r-gray-300">Product Image</th>
-            <th className="border border-r-gray-300 text-xs md:text-sm px-2 ">Product Name</th>
-            <th className="border border-r-gray-300">Price</th>
+          <th className="border border-r-gray-300 py-5">Product Image</th>
+            <th className="border border-r-gray-300 py-5 text-xs md:text-sm px-2 ">Product Name</th>
+            <th className="border border-r-gray-300 py-5">Price</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product, index) => (
-            <tr key={product.id} className='border border-gray-200 p-2 shadow-md rounded-md mt-5'>
+            <tr key={product.id} className='border border-gray-200 p-2 shadow-md rounded-md mt-5 hover:bg-gray-100'>
                 
-                <td className="border border-r-gray-300"><img src={product.images[0].src} alt={product.name} height='50px'  width={150} className='rounded-lg' /></td>
+                <td className="border border-r-gray-300 p-2"><img src={product.images[0].src} alt={product.name} height='50px'  width={150} className='rounded-xl' /></td>
               <td className="border border-r-gray-300  text-center text-xs md:text-sm px-2">{product.name}</td>
               <td className="border border-r-gray-300 text-center font-bold px-10">
                 {editing ? (

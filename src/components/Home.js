@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import ProductTable from './ProductTable/ProductTable'
 import BulkUploadButton from './BulkUploadButton/BulkUploadButton';
 import PuffLoader from "react-spinners/PuffLoader";
+import { BsArrowRightCircle } from 'react-icons/bs';
 
 function Home() {
+    const [showTable, setShowTable] = useState(false);
     //! preloader
     const [preLoading,setPreLoading]= useState(false);
     useEffect(()=>{
@@ -29,9 +31,33 @@ function Home() {
           />
           </div>
           :
-    <div className='container mt-5'>
+    <div className='container pt-5'>
         <ProductTable/>
-        <BulkUploadButton/>
+        <div className="text-center  py-5">
+        {!showTable ? (
+            <div className=" flex home items-center justify-center">
+        <button
+          className="home tagline text-center"
+          onClick={() => setShowTable(true)}
+        >
+          Edit Prices Table <BsArrowRightCircle size={25}/>
+        </button> 
+        </div>
+      ) : (
+        <>
+        <div className="items-center justify-center text-center">
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mr-2 text-center"
+            onClick={() => setShowTable(false)}
+          >
+            Hide Edit Table
+          </button>
+          </div>
+          <BulkUploadButton/>
+          </>
+      )}
+        </div>
+        
     </div>
     }
     </>
