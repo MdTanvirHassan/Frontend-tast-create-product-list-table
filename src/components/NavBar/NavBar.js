@@ -145,12 +145,12 @@ const Navbar = () => {
               </Link>
               <Link to="/product">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  About
+                  Product
                 </li>
               </Link>
               <Link to="/update">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Edit
+                  Update
                 </li>
               </Link>
             </ul>
